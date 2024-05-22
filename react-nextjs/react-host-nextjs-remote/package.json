@@ -1,0 +1,18 @@
+{
+  "name": "react-host-nextjs-remote",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "i": "concurrently \"cd host && npm i\" \"cd remote && npm i\"",
+    "start": "concurrently \"cd host && npm run dev\" \"cd remote && npm run dev\"",
+    "e2e:ci": "pnpm start & wait-on http-get://localhost:8080/ && npx cypress run --config-file ../../cypress-e2e/config/cypress.config.ts --config '{\"supportFile\": \"../../cypress-e2e/support/e2e.ts\"}' --spec \"./e2e/*.cy.ts\" --browser=chrome"
+  },
+  "author": "Omher",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "7.6.0",
+    "wait-on": "7.2.0"
+  }
+}
