@@ -1,5 +1,7 @@
 const NextFederationPlugin = require('@module-federation/nextjs-mf');
 
+require('../remote2/cursOfkr/App.d.ts')
+
 module.exports = {
   webpack(config, options) {
     if (!options.isServer) {

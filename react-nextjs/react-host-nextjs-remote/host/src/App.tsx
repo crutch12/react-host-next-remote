@@ -11,7 +11,6 @@ init({
             entry: 'http://localhost:8081/_next/static/chunks/remoteEntry.js'
         }
     ],
-    force: true
 })
 
 const NextjsRemoteComponent = React.lazy(() => loadRemote('remote/nextjs-remote-component'))
@@ -21,12 +20,12 @@ function App() {
   return (
     <>
       <div>This is the React container App hosted at localhost:8080</div>
-        <React.Suspense fallback="loading NextjsRemoteComponent">
-            <NextjsRemoteComponent />
-        </React.Suspense>
-        <React.Suspense fallback="loading NextjsRemotePage">
-            <NextjsRemotePage />
-        </React.Suspense>
+        {/*<React.Suspense fallback="loading NextjsRemoteComponent">*/}
+        {/*    <NextjsRemoteComponent />*/}
+        {/*</React.Suspense>*/}
+        {/*<React.Suspense fallback="loading NextjsRemotePage">*/}
+        {/*    <NextjsRemotePage />*/}
+        {/*</React.Suspense>*/}
     </>
   );
 }

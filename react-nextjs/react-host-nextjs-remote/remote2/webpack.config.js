@@ -1,14 +1,15 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack')
-const { NativeFederationTypeScriptRemote } = require('@module-federation/native-federation-typescript/webpack')
+const { NativeFederationTypeScriptHost } = require('@module-federation/native-federation-typescript/webpack')
 const deps = require('./package.json').dependencies;
 
 const federationConfig = {
   name: 'host',
   filename: 'remoteEntry.js',
-  // remotes: {
-  //   remote: 'remote@http://localhost:8081/_next/static/chunks/remoteEntry.js',
-  // },
+  remotes: {
+    // remote: 'remote@http://localhost:8081/_next/static/chunks/remoteEntry.js',
+    remote: 'remote@http://localhost:8080/remoteEntry.js',
+  },
   exposes: {
     './App': './src/App.tsx',
   },
@@ -76,9 +77,12 @@ module.exports = () => {
       new ModuleFederationPlugin({
         ...federationConfig
       }),
-      NativeFederationTypeScriptRemote({
+      NativeFederationTypeScriptHost({
         moduleFederationConfig: federationConfig,
       }),
+      // NativeFederationTypeScriptRemote({
+      //   moduleFederationConfig: federationConfig,
+      // }),
       new HtmlWebpackPlugin({
         template: './public/index.html',
       }),
@@ -89,6 +93,7 @@ module.exports = () => {
       historyApiFallback: {
         index: '/',
       },
+      port: 8081,
     },
   };
 }
