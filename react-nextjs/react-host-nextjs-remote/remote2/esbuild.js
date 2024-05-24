@@ -17,7 +17,7 @@ const remotes = [
     },
     {
         name: 'cursApp',
-        url: 'http://localhost:8080',
+        url: 'http://localhost:8081',
         typesFolder: '@mf-types',
     },
 ]
@@ -64,18 +64,15 @@ const run = async () => {
             ],
         })
 
-
         try {
             await stat(typesFolder)
         }
         catch (err) {
-            console.error('typesFolder not exist', typesFolder)
-            console.info(`Resoring typesFolder: $ git checkout -- ${typesFolder}`)
+            console.error(`${remote.name} - ${remote.url} failed:`)
+            console.error('typesFolder does not exist!', typesFolder)
+            console.info(`we should restore deleted folder: $ git checkout -- ${typesFolder}`)
             console.log(execSync(`git checkout -- ${typesFolder}`))
         }
-        // if ()
-
-        // execSync('git checkout -- path/to/folder')
     }
 }
 

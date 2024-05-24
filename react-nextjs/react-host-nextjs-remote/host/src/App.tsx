@@ -16,7 +16,7 @@ init({
 const NextjsRemoteComponent = React.lazy(() => loadRemote('remote/nextjs-remote-component'))
 const NextjsRemotePage = React.lazy(() => loadRemote('remote/nextjs-remote-page'))
 
-function App() {
+function App({}: { b?: string }) {
   return (
     <>
       <div>This is the React container App hosted at localhost:8080</div>
