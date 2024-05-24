@@ -17,7 +17,7 @@ const remotes = [
     },
     {
         name: 'cursApp',
-        url: 'http://localhost:8081',
+        url: 'http://localhost:8080',
         typesFolder: '@mf-types',
     },
 ]
@@ -71,6 +71,7 @@ const run = async () => {
         catch (err) {
             console.error('typesFolder not exist', typesFolder)
             console.info(`Resoring typesFolder: $ git checkout -- ${typesFolder}`)
+            console.log(execSync(`git checkout -- ${typesFolder}`))
         }
         // if ()
 
